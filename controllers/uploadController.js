@@ -1,4 +1,3 @@
-const { promisify } = require('util');
 const { Readable } = require('stream');
 
 const uploader = require('../config/storage');
@@ -37,10 +36,7 @@ const uploadImage = async (req, res) => {
             readStream.pipe(writeStream);
         });
 
-        res.status(200).json({
-            status: 'success',
-            imageUrl
-        });
+        res.status(200).json({ status: 'success', imageUrl });
     } catch (error) {
         console.error('Image upload failed', error);
 
