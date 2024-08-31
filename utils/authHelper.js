@@ -1,7 +1,9 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
-const hashPassword = async plainPassword => bcrypt.hash(plainPassword, 10);
+const hashPassword = async plainPassword => {
+    return bcrypt.hash(plainPassword, 10);
+};
 
 const comparePasswords = async (plainPassword, hashedPassword) => {
     return bcrypt.compare(plainPassword, hashedPassword);
