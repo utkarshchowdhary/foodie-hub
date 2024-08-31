@@ -2,16 +2,22 @@ require('dotenv').config();
 const express = require('express');
 
 const initDb = require('./config/initDb');
+const authRoutes = require('./routes/authRoutes');
+const recipeRoutes = require('./routes/recipeRoutes');
 
 const app = express();
+
+// Setup middlewares
+app.use(express.json());
+
+// Define routes
+app.use('/api/v1/auth', authRoutes);
+app.use('/api/v1/recipes', recipeRoutes);
 
 (async () => {
     try {
         // Initialize the database schema
         await initDb();
-
-        // Setup middlewares and routes
-        app.use(express.json());
 
         const PORT = process.env.PORT || 3000;
         app.listen(PORT, () => {

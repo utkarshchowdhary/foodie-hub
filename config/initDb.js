@@ -5,11 +5,12 @@ const initDb = async () => {
     await db.execute(`
             CREATE TABLE IF NOT EXISTS users (
                 id INT AUTO_INCREMENT PRIMARY KEY,
-                username VARCHAR(255) NOT NULL,
+                username VARCHAR(255) NOT NULL UNIQUE,
                 email VARCHAR(255) NOT NULL UNIQUE,
                 password VARCHAR(255) NOT NULL,
-                role ENUM('user', 'chef') NOT NULL,
-                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                role ENUM('user', 'chef') DEFAULT 'user' NOT NULL,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
             );
         `);
 
@@ -19,9 +20,13 @@ const initDb = async () => {
                 id INT AUTO_INCREMENT PRIMARY KEY,
                 chef_id INT NOT NULL,
                 title VARCHAR(255) NOT NULL,
-                cover_image VARCHAR(255),
+                cover_image VARCHAR(255) NOT NULL,
                 draft BOOLEAN DEFAULT TRUE,
+                prep_time INT NOT NULL CHECK (prep_time >= 1),
+                cook_time INT NOT NULL CHECK (cook_time >= 1),
+                servings INT NOT NULL CHECK (servings >= 1),
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
                 FOREIGN KEY (chef_id) REFERENCES users(id) ON DELETE CASCADE
             );
         `);
@@ -30,7 +35,14 @@ const initDb = async () => {
     await db.execute(`
             CREATE TABLE IF NOT EXISTS ingredients (
                 id INT AUTO_INCREMENT PRIMARY KEY,
-                name VARCHAR(255) NOT NULL UNIQUE
+                name VARCHAR(255) NOT NULL UNIQUE,
+                description TEXT,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+                created_by INT NOT NULL,
+                updated_by INT NOT NULL,
+                FOREIGN KEY (created_by) REFERENCES users(id),
+                FOREIGN KEY (updated_by) REFERENCES users(id)
             );
         `);
 
@@ -40,9 +52,11 @@ const initDb = async () => {
                 recipe_id INT NOT NULL,
                 ingredient_id INT NOT NULL,
                 quantity VARCHAR(255),
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
                 PRIMARY KEY (recipe_id, ingredient_id),
                 FOREIGN KEY (recipe_id) REFERENCES recipes(id) ON DELETE CASCADE,
-                FOREIGN KEY (ingredient_id) REFERENCES ingredients(id)
+                FOREIGN KEY (ingredient_id) REFERENCES ingredients(id) ON DELETE RESTRICT
             );
         `);
 
@@ -55,6 +69,8 @@ const initDb = async () => {
                 content_text TEXT,
                 content_image VARCHAR(255),
                 display_order INT NOT NULL,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
                 FOREIGN KEY (recipe_id) REFERENCES recipes(id) ON DELETE CASCADE
             );
         `);
@@ -68,6 +84,7 @@ const initDb = async () => {
                 rating INT CHECK(rating >= 1 AND rating <= 5),
                 comment TEXT,
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
                 FOREIGN KEY (recipe_id) REFERENCES recipes(id) ON DELETE CASCADE,
                 FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
             );
