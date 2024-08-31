@@ -51,7 +51,7 @@ const initDb = async () => {
             CREATE TABLE IF NOT EXISTS recipe_ingredients (
                 recipe_id INT NOT NULL,
                 ingredient_id INT NOT NULL,
-                quantity DECIMAL(10, 2),
+                quantity DECIMAL(10, 2) CHECK (quantity > 0),
                 unit VARCHAR(50),
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                 updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -67,6 +67,7 @@ const initDb = async () => {
                 id INT AUTO_INCREMENT PRIMARY KEY,
                 recipe_id INT NOT NULL,
                 content_type ENUM('text', 'image') NOT NULL,
+                content_heading VARCHAR(255),
                 content_text TEXT,
                 content_image VARCHAR(255),
                 display_order INT NOT NULL,
