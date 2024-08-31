@@ -51,7 +51,8 @@ const initDb = async () => {
             CREATE TABLE IF NOT EXISTS recipe_ingredients (
                 recipe_id INT NOT NULL,
                 ingredient_id INT NOT NULL,
-                quantity VARCHAR(255),
+                quantity DECIMAL(10, 2),
+                unit VARCHAR(50),
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                 updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
                 PRIMARY KEY (recipe_id, ingredient_id),
