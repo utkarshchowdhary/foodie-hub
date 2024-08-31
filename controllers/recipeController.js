@@ -1,5 +1,9 @@
 const db = require('../config/db');
 
+const createRecipe = async (req, res) => {
+    res.status(201).json({ status: 'success' });
+};
+
 const getRecipes = async (req, res) => {
     try {
         const [recipes] = await db.execute('SELECT * FROM recipes WHERE draft = FALSE');
@@ -11,5 +15,6 @@ const getRecipes = async (req, res) => {
 };
 
 module.exports = {
+    createRecipe,
     getRecipes
 };
