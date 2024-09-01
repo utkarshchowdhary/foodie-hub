@@ -117,6 +117,8 @@ const initDb = async () => {
                 recipes r
             LEFT JOIN
                 reviews rv ON r.id = rv.recipe_id
+            WHERE
+                r.draft = FALSE
             GROUP BY
                 r.id, r.title, r.cover_image;
         `);
