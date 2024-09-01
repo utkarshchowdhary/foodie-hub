@@ -16,12 +16,13 @@ const contentSchema = z
         content_type: z.enum(['text', 'image'], {
             message: 'Content type must be either "text" or "image"'
         }),
-        content_heading: z.string().max(255).optional(),
-        content_text: z.string().optional(),
+        content_heading: z.string().max(255).nullable().default(null),
+        content_text: z.string().nullable().default(null),
         content_image: z
             .string()
             .url({ message: 'Content image URL must be a valid URL' })
-            .optional()
+            .nullable()
+            .default(null)
     })
     .refine(
         data =>
@@ -41,7 +42,7 @@ const recipeSchema = z.object({
         .string()
         .url({ message: 'Cover image URL must be a valid URL' })
         .min(1, 'Cover image URL is required'),
-    draft: z.boolean().optional(),
+    draft: z.boolean().default(true),
     prep_time: z.number().int().min(1, { message: 'Preparation time must be at least 1 minute' }),
     cook_time: z.number().int().min(1, { message: 'Cooking time must be at least 1 minute' }),
     servings: z.number().int().min(1, { message: 'Servings must be at least 1' }),
