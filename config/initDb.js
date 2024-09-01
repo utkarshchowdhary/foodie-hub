@@ -70,7 +70,7 @@ const initDb = async () => {
                 content_heading VARCHAR(255),
                 content_text TEXT,
                 content_image VARCHAR(255),
-                display_order INT NOT NULL,
+                display_order INT NOT NULL CHECK (display_order >= 0),
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                 updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
                 FOREIGN KEY (recipe_id) REFERENCES recipes(id) ON DELETE CASCADE
