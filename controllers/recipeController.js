@@ -12,6 +12,59 @@ const getRecipes = async (req, res) => {
     }
 };
 
+const getRecipe = async (req, res) => {
+    const { id: recipeId } = req.params;
+
+    try {
+        // Fetch the recipe
+        const [[recipe] = []] = await db.execute(
+            'SELECT * FROM recipe_summary WHERE recipe_id = ?',
+            [recipeId]
+        );
+
+        if (!recipe) {
+            return res.status(404).json({ status: 'error', message: 'Recipe not found' });
+        }
+
+        // Fetch ingredients with quantities and units
+        const [ingredients] = await db.execute(
+            `
+            SELECT
+                i.id AS ingredient_id,
+                i.name,
+                i.description,
+                ri.quantity,
+                ri.unit
+            FROM
+                ingredients i
+            JOIN
+                recipe_ingredients ri ON i.id = ri.ingredient_id
+            WHERE
+                ri.recipe_id = ?`,
+            [recipeId]
+        );
+
+        // Fetch content
+        const [content] = await db.execute(
+            'SELECT * FROM recipe_content WHERE recipe_id = ? ORDER BY display_order',
+            [recipeId]
+        );
+
+        res.status(200).json({
+            status: 'success',
+            data: {
+                ...recipe,
+                ingredients,
+                content
+            }
+        });
+    } catch (error) {
+        console.error(`Error getting recipe with ID ${recipeId}.`, error);
+
+        res.status(500).json({ status: 'error', message: 'Internal server error' });
+    }
+};
+
 const createRecipe = async (req, res) => {
     const { id: chefId } = req.userData;
     const { title, cover_image, draft, prep_time, cook_time, servings, ingredients, content } =
@@ -65,5 +118,6 @@ const createRecipe = async (req, res) => {
 
 module.exports = {
     getRecipes,
+    getRecipe,
     createRecipe
 };
