@@ -5,6 +5,7 @@ const initDb = require('./config/initDb');
 const authRoutes = require('./routes/authRoutes');
 const recipeRoutes = require('./routes/recipeRoutes');
 const uploadRoutes = require('./routes/uploadRoutes');
+const ingredientRoutes = require('./routes/ingredientRoutes');
 
 const app = express();
 
@@ -15,6 +16,7 @@ app.use(express.json());
 app.use('/api/v1/auth', authRoutes);
 app.use('/api/v1/upload', uploadRoutes);
 app.use('/api/v1/recipes', recipeRoutes);
+app.use('/api/v1/ingredients', ingredientRoutes);
 
 (async () => {
     try {
