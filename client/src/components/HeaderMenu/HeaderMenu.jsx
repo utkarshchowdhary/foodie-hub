@@ -10,11 +10,9 @@ const HeaderMenu = () => {
 
     return (
         <div className="header-menu">
-            <NavLink to="/" exact>
-                HOME
-            </NavLink>
+            <NavLink to="/">HOME</NavLink>
             {auth.isAuthenticated && auth.isChef && (
-                <NavLink to="/recipies/new">ADD RECIPE</NavLink>
+                <NavLink to="/recipies/add">ADD RECIPE</NavLink>
             )}
             {!auth.isChecking && !auth.isAuthenticated && (
                 <NavLink to="/auth">AUTHENTICATE</NavLink>
