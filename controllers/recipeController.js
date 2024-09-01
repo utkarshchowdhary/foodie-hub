@@ -67,14 +67,23 @@ const getRecipe = async (req, res) => {
 
 const createRecipe = async (req, res) => {
     const { id: chefId } = req.userData;
-    const { title, cover_image, draft, prep_time, cook_time, servings, ingredients, content } =
-        req.body;
+    const {
+        title,
+        sub_title,
+        cover_image,
+        draft,
+        prep_time,
+        cook_time,
+        servings,
+        ingredients,
+        content
+    } = req.body;
 
     try {
         // Insert the recipe into the recipes table
         const [{ insertId: recipeId }] = await db.execute(
-            'INSERT INTO recipes (chef_id, title, cover_image, draft, prep_time, cook_time, servings) VALUES (?, ?, ?, ?, ?, ?, ?)',
-            [chefId, title, cover_image, draft, prep_time, cook_time, servings]
+            'INSERT INTO recipes (chef_id, title, sub_title, cover_image, draft, prep_time, cook_time, servings) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
+            [chefId, title, sub_title, cover_image, draft, prep_time, cook_time, servings]
         );
 
         for (const ingredient of ingredients) {

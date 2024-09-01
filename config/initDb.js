@@ -20,6 +20,7 @@ const initDb = async () => {
                 id INT AUTO_INCREMENT PRIMARY KEY,
                 chef_id INT NOT NULL,
                 title VARCHAR(255) NOT NULL,
+                sub_title VARCHAR(255),
                 cover_image VARCHAR(255) NOT NULL,
                 draft BOOLEAN DEFAULT TRUE,
                 prep_time INT NOT NULL CHECK (prep_time >= 1),
@@ -110,6 +111,7 @@ const initDb = async () => {
             SELECT
                 r.id AS recipe_id,
                 r.title,
+                r.sub_title,
                 r.cover_image,
                 r.prep_time,
                 r.cook_time,
@@ -127,7 +129,7 @@ const initDb = async () => {
             WHERE
                 r.draft = FALSE
             GROUP BY
-                r.id, r.title, r.cover_image, r.chef_id, r.prep_time, r.cook_time, r.servings, u.username;
+                r.id, r.title, r.sub_title, r.cover_image, r.chef_id, r.prep_time, r.cook_time, r.servings, u.username;
         `);
 
     console.log('Database initialized successfully');

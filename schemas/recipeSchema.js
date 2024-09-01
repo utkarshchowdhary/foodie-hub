@@ -37,6 +37,7 @@ const contentSchema = z
 
 const recipeSchema = z.object({
     title: z.string().min(3, 'Title is required').max(255),
+    sub_title: z.string().max(255).nullable().default(null),
     cover_image: z
         .string()
         .url({ message: 'Cover image URL must be a valid URL' })
