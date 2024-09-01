@@ -12,6 +12,14 @@ const createRecipe = async (req, res) => {
             [chefId, title, cover_image, draft, prep_time, cook_time, servings]
         );
 
+        for (const ingredient of ingredients) {
+            // Perform upsert on the ingredients table
+            const [{ insertId: ingredientId }] = await db.execute(
+                "INSERT INTO ingredients (name, description, created_by, updated_by) VALUES (?, ?, ?, ?) ON DUPLICATE KEY UPDATE updated_by = IF(VALUES(description) IS NOT NULL AND (IFNULL(description, '') <> VALUES(description)), VALUES(updated_by), updated_by), description = COALESCE(VALUES(description), description), id = LAST_INSERT_ID(id)",
+                [ingredient.name, ingredient.description, chefId, chefId]
+            );
+        }
+
         // Insert content into the recipe_content table
         for (let i = 0; i < content.length; i++) {
             const widget = content[i];

@@ -1,14 +1,13 @@
 const { z } = require('zod');
 
 const ingredientSchema = z.object({
-    id: z.number().optional(), // Optional for new ingredients
     name: z
         .string()
         .min(1, { message: 'Name is required' })
         .max(255, { message: 'Name is too long' }),
-    description: z.string().optional(),
-    quantity: z.number().gt(0).optional(),
-    unit: z.string().max(50, { message: 'Unit is too long' }).optional() // e.g., grams, cups, etc.
+    description: z.string().nullable().default(null),
+    quantity: z.number().gt(0).nullable().default(null),
+    unit: z.string().max(50, { message: 'Unit is too long' }).nullable().default(null) // e.g., grams, cups, etc.
 });
 
 const contentSchema = z
