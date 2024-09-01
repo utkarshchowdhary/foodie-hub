@@ -18,6 +18,12 @@ const createRecipe = async (req, res) => {
                 "INSERT INTO ingredients (name, description, created_by, updated_by) VALUES (?, ?, ?, ?) ON DUPLICATE KEY UPDATE updated_by = IF(VALUES(description) IS NOT NULL AND (IFNULL(description, '') <> VALUES(description)), VALUES(updated_by), updated_by), description = COALESCE(VALUES(description), description), id = LAST_INSERT_ID(id)",
                 [ingredient.name, ingredient.description, chefId, chefId]
             );
+
+            // Insert into recipe_ingredients junction table
+            await db.execute(
+                'INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit) VALUES (?, ?, ?, ?)',
+                [recipeId, ingredientId, ingredient.quantity, ingredient.unit]
+            );
         }
 
         // Insert content into the recipe_content table
