@@ -111,8 +111,11 @@ const initDb = async () => {
                 r.id AS recipe_id,
                 r.title,
                 r.cover_image,
+                r.prep_time,
+                r.cook_time,
+                r.servings,
                 r.chef_id,
-                u.username AS chef_username,
+                u.username AS chef_name,
                 ROUND(COALESCE(AVG(rv.rating), 0), 1) AS average_rating,
                 COUNT(rv.id) AS total_reviews
             FROM
@@ -124,7 +127,7 @@ const initDb = async () => {
             WHERE
                 r.draft = FALSE
             GROUP BY
-                r.id, r.title, r.cover_image, r.chef_id, u.username;
+                r.id, r.title, r.cover_image, r.chef_id, r.prep_time, r.cook_time, r.servings, u.username;
         `);
 
     console.log('Database initialized successfully');
