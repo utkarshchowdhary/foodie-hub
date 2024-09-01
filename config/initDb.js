@@ -111,7 +111,7 @@ const initDb = async () => {
                 r.id AS recipe_id,
                 r.title,
                 r.cover_image,
-                COALESCE(AVG(rv.rating), 0) AS average_rating,
+                ROUND(COALESCE(AVG(rv.rating), 0), 1) AS average_rating,
                 COUNT(rv.id) AS total_reviews
             FROM
                 recipes r

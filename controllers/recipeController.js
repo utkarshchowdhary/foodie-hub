@@ -1,5 +1,17 @@
 const db = require('../config/db');
 
+const getRecipes = async (req, res) => {
+    try {
+        const [recipes] = await db.execute('SELECT * FROM recipe_summary');
+
+        res.status(200).json({ status: 'success', data: recipes });
+    } catch (error) {
+        console.error('Error getting recipes.', error);
+
+        res.status(500).json({ status: 'error', message: 'Internal server error' });
+    }
+};
+
 const createRecipe = async (req, res) => {
     const { id: chefId } = req.userData;
     const { title, cover_image, draft, prep_time, cook_time, servings, ingredients, content } =
@@ -51,19 +63,7 @@ const createRecipe = async (req, res) => {
     }
 };
 
-const getRecipes = async (req, res) => {
-    try {
-        const [recipes] = await db.execute('SELECT * FROM recipes WHERE draft = FALSE');
-
-        res.status(200).json({ status: 'success', data: recipes });
-    } catch (error) {
-        console.error('Error getting recipes.', error);
-
-        res.status(500).json({ status: 'error', message: 'Internal server error' });
-    }
-};
-
 module.exports = {
-    createRecipe,
-    getRecipes
+    getRecipes,
+    createRecipe
 };
