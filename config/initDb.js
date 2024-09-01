@@ -111,16 +111,20 @@ const initDb = async () => {
                 r.id AS recipe_id,
                 r.title,
                 r.cover_image,
+                r.chef_id,
+                u.username AS chef_username,
                 ROUND(COALESCE(AVG(rv.rating), 0), 1) AS average_rating,
                 COUNT(rv.id) AS total_reviews
             FROM
                 recipes r
             LEFT JOIN
                 reviews rv ON r.id = rv.recipe_id
+            LEFT JOIN
+                users u ON r.chef_id = u.id
             WHERE
                 r.draft = FALSE
             GROUP BY
-                r.id, r.title, r.cover_image;
+                r.id, r.title, r.cover_image, r.chef_id, u.username;
         `);
 
     console.log('Database initialized successfully');
