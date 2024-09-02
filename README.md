@@ -6,7 +6,7 @@ Foodie Hub is a full-stack web application that enables users to browse, save, a
 
 -   **User Authentication & Authorization**: Secure sign-up, login, and role-based access control.
 -   **Recipe Management**: Chefs can create, update, and manage their recipes, which include titles, subtitles, cover images, ingredients, and additional metadata such as preparation time, cooking time, and servings. They can save recipes as drafts, allowing them to work on and update the content before making it public.
--   **Recipe Saving**: Logged-in users can save their favorite recipes for easy access..
+-   **Recipe Saving**: Logged-in users can save their favorite recipes for easy access.
 -   **Dynamic Content System**: Recipes can include headings, text, and images arranged in a flexible, dynamic order.
 -   **Image Handling**: Chefs can upload and manage images for recipes, including cover images and content images, using Cloudinary for storage and management.
 -   **Ingredient Management**: Ingredients are shared between recipes, and each recipe can have specific quantities and units for each ingredient.
