@@ -1,0 +1,302 @@
+[
+    {
+        "recipe_id": 1,
+        "title": "Make Shakshuka Fast and Easy in the Microwave",
+        "sub_title": "A spiced tomato sauce sets the stage for perfectly cooked eggs.",
+        "cover_image": "https://res.cloudinary.com/dfbtb7ij8/image/upload/v1725127715/ccwaxor9bmsx3kt8ns2t.jpg",
+        "prep_time": 10,
+        "cook_time": 20,
+        "servings": 4,
+        "chef_id": 1,
+        "chef_name": "Boyardee",
+        "average_rating": "0.0",
+        "total_reviews": 0,
+        "ingredients": [
+            {
+                "ingredient_id": 1,
+                "name": "red bell peppers",
+                "quantity": "3.00",
+                "unit": "cups"
+            },
+            {
+                "ingredient_id": 2,
+                "name": "small yellow onion",
+                "quantity": "1.00",
+                "unit": "cup"
+            },
+            {
+                "ingredient_id": 3,
+                "name": "water",
+                "quantity": "0.25",
+                "unit": "cup"
+            },
+            {
+                "ingredient_id": 4,
+                "name": "crushed tomatoes",
+                "quantity": "15.00",
+                "unit": "ounce"
+            },
+            {
+                "ingredient_id": 5,
+                "name": "extra-virgin olive oil",
+                "quantity": "2.00",
+                "unit": "tablespoons"
+            },
+            {
+                "ingredient_id": 6,
+                "name": "garlic",
+                "quantity": "2.00",
+                "unit": "clove"
+            },
+            {
+                "ingredient_id": 7,
+                "name": "paprika",
+                "quantity": "0.50",
+                "unit": "teaspoon"
+            },
+            {
+                "ingredient_id": 8,
+                "name": "ground cumin",
+                "quantity": "0.50",
+                "unit": "teaspoon"
+            },
+            {
+                "ingredient_id": 9,
+                "name": "ground coriander",
+                "quantity": "0.50",
+                "unit": "teaspoon"
+            },
+            {
+                "ingredient_id": 10,
+                "name": "ground cinnamon",
+                "quantity": "0.10",
+                "unit": "teaspoon"
+            },
+            {
+                "ingredient_id": 11,
+                "name": "cayenne pepper",
+                "quantity": "0.10",
+                "unit": "teaspoon"
+            },
+            {
+                "ingredient_id": 12,
+                "name": "kosher salt",
+                "quantity": "0.75",
+                "unit": "teaspoon"
+            }
+        ],
+        "content": [
+            {
+                "display_order": 0,
+                "content_type": "text",
+                "content_heading": null,
+                "content_text": "Shakshuka is the ultimate comfort food that can be served for any meal—breakfast, lunch, dinner, and even as a snack. There are many versions—this one has bell peppers, onions, tomatoes, and is made in the microwave, perfect for when you don’t have access to a stove top or don’t want to heat up the kitchen. It’s full of spices, like cumin, coriander, and a pinch of cinnamon. The smells remind us of being in a spice market or baking gingerbread, so warm and comforting!",
+                "content_image": null
+            },
+            {
+                "display_order": 1,
+                "content_type": "text",
+                "content_heading": "The Origins of Shakshuka",
+                "content_text": null,
+                "content_image": null
+            },
+            {
+                "display_order": 2,
+                "content_type": "text",
+                "content_heading": null,
+                "content_text": "Shakshuka originates from Tunisia, but is commonly made throughout the Middle East and North Africa, with regional spins on the spices and vegetables used. Onions, tomatoes, and peppers are a must and so are the eggs. Feel free to improvise and add your own spin to it. The spice combo is slightly citrusy with a big hit of warmth from the cinnamon, but the red sauce can take it. This version doesn’t have any heat, so spicy chiles or drizzle of zhoug would be a nice contrast to the sweetness in the tomatoes.",
+                "content_image": null
+            },
+            {
+                "display_order": 3,
+                "content_type": "image",
+                "content_heading": null,
+                "content_text": null,
+                "content_image": "https://res.cloudinary.com/dfbtb7ij8/image/upload/v1725129189/fefci57jbd9x7pgbcaio.jpg"
+            }
+        ]
+    },
+    {
+        "recipe_id": 2,
+        "title": "Bran Muffins",
+        "sub_title": "A malty, nutty, and sweet breakfast muffin with an easy trick for a moist and flavorful crumb.",
+        "cover_image": "https://res.cloudinary.com/dfbtb7ij8/image/upload/v1725212856/ixlvzu8dlzsoxfab7zkw.jpg",
+        "prep_time": 10,
+        "cook_time": 27,
+        "servings": 12,
+        "chef_id": 1,
+        "chef_name": "Boyardee",
+        "average_rating": "0.0",
+        "total_reviews": 0,
+        "ingredients": [
+            {
+                "ingredient_id": 13,
+                "name": "wheat bran",
+                "quantity": "1.00",
+                "unit": "cup"
+            },
+            {
+                "ingredient_id": 14,
+                "name": "white whole wheat flour",
+                "quantity": "180.00",
+                "unit": "g"
+            },
+            {
+                "ingredient_id": 15,
+                "name": "baking powder",
+                "quantity": "2.00",
+                "unit": "teaspoons"
+            },
+            {
+                "ingredient_id": 12,
+                "name": "kosher salt",
+                "quantity": "0.50",
+                "unit": "teaspoon"
+            },
+            {
+                "ingredient_id": 10,
+                "name": "ground cinnamon",
+                "quantity": "0.10",
+                "unit": "teaspoon"
+            },
+            {
+                "ingredient_id": 16,
+                "name": "light brown sugar",
+                "quantity": "77.00",
+                "unit": "g"
+            },
+            {
+                "ingredient_id": 17,
+                "name": "honey",
+                "quantity": "113.00",
+                "unit": "g"
+            }
+        ],
+        "content": [
+            {
+                "display_order": 0,
+                "content_type": "text",
+                "content_heading": null,
+                "content_text": "I always run into bran muffins while traveling. They’re usually the only muffin flavor that’s still left in the case when I’m dashing through the train station or airport at odd hours of the day. Ever hopeful, I quickly purchase one to bring along and regret it as soon as I settle in my seat and take a bite.",
+                "content_image": null
+            },
+            {
+                "display_order": 1,
+                "content_type": "text",
+                "content_heading": null,
+                "content_text": "Let’s face it. Most people wouldn’t notice if you changed the name of bran muffins to bland muffins. But they don't have to be dense and tasteless! It turns out they can be malty, nutty, and sweet, like a honey graham cracker—but even better because they’re moist and fluffy.",
+                "content_image": null
+            },
+            {
+                "display_order": 2,
+                "content_type": "text",
+                "content_heading": "The Trick for Stellar Bran Muffins",
+                "content_text": null,
+                "content_image": null
+            },
+            {
+                "display_order": 3,
+                "content_type": "text",
+                "content_heading": null,
+                "content_text": "The key flavor hack for bran muffins is to toast the wheat bran. I first saw this in a Nancy Silverton recipe, and I won’t ever go back. Toasting the wheat bran makes it extra flavorful with nutty, caramelized notes, just like when you toast nuts and seeds or make brown butter.",
+                "content_image": null
+            },
+            {
+                "display_order": 4,
+                "content_type": "image",
+                "content_heading": null,
+                "content_text": null,
+                "content_image": "https://res.cloudinary.com/dfbtb7ij8/image/upload/v1725214306/ajtawszqzdms4limol0q.jpg"
+            }
+        ]
+    },
+    {
+        "recipe_id": 3,
+        "title": "Cioccolata Calda (Italian Hot Chocolate)",
+        "sub_title": "It’s so rich and thick it’s almost like drinking a mug of pudding.",
+        "cover_image": "https://res.cloudinary.com/dfbtb7ij8/image/upload/v1725214450/g6dsl4smmw6dqzgxyeog.jpg",
+        "prep_time": 5,
+        "cook_time": 12,
+        "servings": 4,
+        "chef_id": 1,
+        "chef_name": "Boyardee",
+        "average_rating": "0.0",
+        "total_reviews": 0,
+        "ingredients": [
+            {
+                "ingredient_id": 18,
+                "name": "unsweetened cocoa powder",
+                "quantity": "0.25",
+                "unit": "cup"
+            },
+            {
+                "ingredient_id": 19,
+                "name": "cornstarch",
+                "quantity": "2.00",
+                "unit": "tablespoons"
+            },
+            {
+                "ingredient_id": 20,
+                "name": "whole milk",
+                "quantity": "2.00",
+                "unit": "cups"
+            },
+            {
+                "ingredient_id": 21,
+                "name": "granulated sugar",
+                "quantity": "0.25",
+                "unit": "cup"
+            },
+            {
+                "ingredient_id": 22,
+                "name": "70% dark chocolate",
+                "quantity": "3.00",
+                "unit": "ounces"
+            }
+        ],
+        "content": [
+            {
+                "display_order": 0,
+                "content_type": "text",
+                "content_heading": "What Makes Cioccolata Calda (Italian Hot Chocolate) Special",
+                "content_text": null,
+                "content_image": null
+            },
+            {
+                "display_order": 1,
+                "content_type": "text",
+                "content_heading": null,
+                "content_text": "Italian hot chocolate is defined as much by its texture as its flavor. It is usually made with a thickening agent, like cornstarch (which is the same ingredient used to set pudding). I have also seen some recipes that skip the starch and call for lots and lots of melted chocolate, which, on its own, also thickens a bit as it cools.",
+                "content_image": null
+            },
+            {
+                "display_order": 2,
+                "content_type": "text",
+                "content_heading": null,
+                "content_text": "The version I had as a kid almost certainly had cornstarch in it, so I use that here, but I also add melted chocolate. The result is probably richer than the drink that I had back then, but it’s delicious—special enough to live up to my (possibly overblown) memory of that Italian hot chocolate.",
+                "content_image": null
+            },
+            {
+                "display_order": 3,
+                "content_type": "text",
+                "content_heading": "My Mom’s “Con Latte” Trick",
+                "content_text": null,
+                "content_image": null
+            },
+            {
+                "display_order": 4,
+                "content_type": "text",
+                "content_heading": null,
+                "content_text": "Not all Italian hot chocolate is as thick as the version I first had as a kid, but if you’re making it at home, it’s easy to accidentally keep the mixture on the stove for a second too long and end up with hot pudding. If you do, just copy my mom and stir in some extra hot milk; the result is just as delicious as ever.",
+                "content_image": null
+            },
+            {
+                "display_order": 5,
+                "content_type": "image",
+                "content_heading": null,
+                "content_text": null,
+                "content_image": "https://res.cloudinary.com/dfbtb7ij8/image/upload/v1725214838/yibnuqatmdsyorrrurcv.jpg"
+            }
+        ]
+    }
+]
