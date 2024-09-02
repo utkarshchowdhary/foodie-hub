@@ -26,14 +26,16 @@ function App() {
         >
             <Router>
                 <Header />
-                <ErrorBoundary>
-                    <Suspense fallback={<LoadingSpinner />}>
-                        <Routes>
-                            <Route path="/" element={<RecipesPage />} />
-                            <Route path="*" element={<Navigate to="/" />} />
-                        </Routes>
-                    </Suspense>
-                </ErrorBoundary>
+                <main>
+                    <ErrorBoundary>
+                        <Suspense fallback={<LoadingSpinner />}>
+                            <Routes>
+                                <Route path="/" element={<RecipesPage />} />
+                                <Route path="*" element={<Navigate to="/" />} />
+                            </Routes>
+                        </Suspense>
+                    </ErrorBoundary>
+                </main>
             </Router>
         </AuthContext.Provider>
     );
