@@ -4,11 +4,11 @@ import './RecipesList.scss';
 
 const RecipesList = ({ recipes }) => {
     return (
-        <div className="recipes-list">
+        <ul className="recipes-list">
             {recipes.map(recipe => (
-                <RecipeItem key={recipe.id} recipe={recipe} />
+                <RecipeItem key={recipe.recipe_id} recipe={recipe} />
             ))}
-        </div>
+        </ul>
     );
 };
 

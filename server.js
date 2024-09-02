@@ -12,6 +12,8 @@ const app = express();
 
 // Setup middlewares
 app.use(express.json());
+
+// Serve static files from the React client’s build folder
 app.use(express.static(path.join(__dirname, 'client/dist')));
 
 // Define routes
@@ -20,6 +22,7 @@ app.use('/api/v1/upload', uploadRoutes);
 app.use('/api/v1/recipes', recipeRoutes);
 app.use('/api/v1/ingredients', ingredientRoutes);
 
+// Handle all other routes by sending React's index.html file
 app.get('*', (_req, res) => {
     res.sendFile(path.join(__dirname, 'client/dist', 'index.html'));
 });
