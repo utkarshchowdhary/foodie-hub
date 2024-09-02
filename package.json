@@ -4,8 +4,11 @@
     "description": "",
     "main": "index.js",
     "scripts": {
+        "client": "cd client && npm run dev",
+        "build": "cd client && npm run build",
         "start": "node server.js",
-        "dev": "nodemon server.js"
+        "server": "nodemon server.js",
+        "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\""
     },
     "keywords": [],
     "author": "",
@@ -21,6 +24,7 @@
         "zod": "^3.23.8"
     },
     "devDependencies": {
+        "concurrently": "^8.2.2",
         "nodemon": "^3.1.4"
     }
 }
