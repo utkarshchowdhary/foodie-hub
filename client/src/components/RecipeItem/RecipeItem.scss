@@ -22,6 +22,9 @@
     overflow: hidden;
 
     &:hover {
+        transform: translate(-2px, -2px);
+        box-shadow: 5px 5px 0 rgb(204, 219, 232);
+
         .recipe_image {
             filter: contrast(100%);
         }
