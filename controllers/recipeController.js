@@ -40,13 +40,26 @@ const getRecipe = async (req, res) => {
             JOIN
                 recipe_ingredients ri ON i.id = ri.ingredient_id
             WHERE
-                ri.recipe_id = ?`,
+                ri.recipe_id = ?
+            `,
             [recipeId]
         );
 
         // Fetch content
         const [content] = await db.execute(
-            'SELECT * FROM recipe_content WHERE recipe_id = ? ORDER BY display_order',
+            `
+            SELECT
+                display_order,
+                content_type,
+                content_heading,
+                content_text,
+                content_image
+            FROM
+                recipe_content
+            WHERE
+                recipe_id = ?
+            ORDER BY display_order
+            `,
             [recipeId]
         );
 
@@ -82,20 +95,40 @@ const createRecipe = async (req, res) => {
     try {
         // Insert the recipe into the recipes table
         const [{ insertId: recipeId }] = await db.execute(
-            'INSERT INTO recipes (chef_id, title, sub_title, cover_image, draft, prep_time, cook_time, servings) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
+            `
+            INSERT INTO recipes (
+                chef_id, title, sub_title, cover_image, draft, prep_time, cook_time, servings
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+            `,
             [chefId, title, sub_title, cover_image, draft, prep_time, cook_time, servings]
         );
 
         for (const ingredient of ingredients) {
             // Perform upsert on the ingredients table
             const [{ insertId: ingredientId }] = await db.execute(
-                "INSERT INTO ingredients (name, description, created_by, updated_by) VALUES (?, ?, ?, ?) ON DUPLICATE KEY UPDATE updated_by = IF(VALUES(description) IS NOT NULL AND (IFNULL(description, '') <> VALUES(description)), VALUES(updated_by), updated_by), description = COALESCE(VALUES(description), description), id = LAST_INSERT_ID(id)",
+                `
+                INSERT INTO ingredients (
+                    name, description, created_by, updated_by
+                ) VALUES (?, ?, ?, ?)
+                ON DUPLICATE KEY UPDATE
+                    updated_by = IF(
+                        VALUES(description) IS NOT NULL AND (IFNULL(description, '') <> VALUES(description)),
+                        VALUES(updated_by),
+                        updated_by
+                    ),
+                    description = COALESCE(VALUES(description), description),
+                    id = LAST_INSERT_ID(id)
+                `,
                 [ingredient.name, ingredient.description, chefId, chefId]
             );
 
             // Insert into recipe_ingredients junction table
             await db.execute(
-                'INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit) VALUES (?, ?, ?, ?)',
+                `
+                INSERT INTO recipe_ingredients (
+                    recipe_id, ingredient_id, quantity, unit
+                ) VALUES (?, ?, ?, ?)
+                `,
                 [recipeId, ingredientId, ingredient.quantity, ingredient.unit]
             );
         }
@@ -105,7 +138,11 @@ const createRecipe = async (req, res) => {
             const widget = content[i];
 
             await db.execute(
-                'INSERT INTO recipe_content (recipe_id, content_type, content_heading, content_text, content_image, display_order) VALUES (?, ?, ?, ?, ?, ?)',
+                `
+                INSERT INTO recipe_content (
+                    recipe_id, content_type, content_heading, content_text, content_image, display_order
+                ) VALUES (?, ?, ?, ?, ?, ?)
+                `,
                 [
                     recipeId,
                     widget.content_type,
