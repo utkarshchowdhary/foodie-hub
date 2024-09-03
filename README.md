@@ -31,11 +31,14 @@ cd foodie-hub
 
 ### Configure environment variables in a `.env` file
 
+Here are the required ones:
+
 ```bash
 DB_HOST=<your-database-host>
 DB_USER=<your-database-username>
 DB_NAME=<your-database-name>
 DB_PASS=<your-database-password>
+DB_PORT=<your-database-port>
 CLOUDINARY_CLOUD_NAME=<your-cloudinary-cloud-name>
 CLOUDINARY_API_KEY=<your-cloudinary-api-key>
 CLOUDINARY_API_SECRET=<your-cloudinary-api-secret>
